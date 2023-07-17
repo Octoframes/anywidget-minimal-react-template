@@ -1,7 +1,15 @@
-import { defineConfig } from 'vite'
+// vite.config.js
+import { defineConfig } from "vite";
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+
 export default defineConfig({
-  plugins: [react()],
-})
+	plugins: [react()],
+	build: {
+		outDir: "hello_widget/static",
+		lib: {
+			entry: ["src/main.jsx"],
+			formats: ["es"],
+		},
+	},
+});
