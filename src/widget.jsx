@@ -7,7 +7,7 @@ export function render({ model, el }) {
   let root = ReactDOM.createRoot(el);
   root.render(
     <React.StrictMode>
-      <App />
+      <App content="And here is some content!!!!!!!!" />
     </React.StrictMode>,
   );
   return () => root.unmount();

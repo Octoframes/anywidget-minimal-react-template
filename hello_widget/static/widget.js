@@ -7021,12 +7021,12 @@ Dl.propTypes = $p;
 Dl.defaultProps = Hp;
 var Qp = Ec.default = Dl;
 function Vp({ content: e }) {
-  return /* @__PURE__ */ so.jsx(Qp, { value: "Hiiii" });
+  return /* @__PURE__ */ so.jsx(Qp, { value: e });
 }
 function Wp({ model: e, el: t }) {
   let n = ao.createRoot(t);
   return n.render(
-    /* @__PURE__ */ so.jsx(tf.StrictMode, { children: /* @__PURE__ */ so.jsx(Vp, {}) })
+    /* @__PURE__ */ so.jsx(tf.StrictMode, { children: /* @__PURE__ */ so.jsx(Vp, { content: "And here is some content!!!!!!!!" }) })
   ), () => n.unmount();
 }
 export {
