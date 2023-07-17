@@ -7023,7 +7023,6 @@ var Qp = Ec.default = Ol;
 function Vp() {
   return /* @__PURE__ */ Qt.jsxs(Qt.Fragment, { children: [
     /* @__PURE__ */ Qt.jsx("h1", { children: "Hello Anywidget + Vite!" }),
-    ";",
     /* @__PURE__ */ Qt.jsx(Qp, { value: "Heyyyhoo" })
   ] });
 }
