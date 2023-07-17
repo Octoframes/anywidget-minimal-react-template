@@ -3,14 +3,20 @@ import { defineConfig } from "vite";
 import react from '@vitejs/plugin-react'
 
 
-export default defineConfig({
-	plugins: [react()],
-	define: {'process.env.NODE_ENV': '"production"'},
-	build: {
-		outDir: "hello_widget/static",
-		lib: {
-			entry: ["src/main.jsx"],
-			formats: ["es"],
+export default defineConfig(async ({ command }) => {
+	let define = {};
+	if (command === "build") {
+		define["process.env.NODE_ENV"] = JSON.stringify("production");
+	}
+	return {
+		plugins: [react()],
+		build: {
+			outDir: "hello_widget/static",
+			lib: {
+				entry: ["src/main.jsx"],
+				formats: ["es"],
+			},
 		},
-	},
+		define,
+	}
 });
