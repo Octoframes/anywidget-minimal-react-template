@@ -4,7 +4,6 @@ import traitlets
 
 class HelloWidget(anywidget.AnyWidget):
     p = pathlib.Path(__file__).parent / "static/widget.js"
-    print(p)
     _esm =  p
 
     # _css=  pathlib.Path(__file__).parent / "static/styles.css"
