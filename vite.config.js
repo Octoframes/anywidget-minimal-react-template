@@ -1,6 +1,7 @@
 // vite.config.js
 import { defineConfig } from "vite";
-import anywidget from "@anywidget/vite";
+import react from '@vitejs/plugin-react'
+
 
 export default defineConfig(async ({ command }) => {
 	let define = {};
@@ -8,11 +9,11 @@ export default defineConfig(async ({ command }) => {
 		define["process.env.NODE_ENV"] = JSON.stringify("production");
 	}
 	return {
-		plugins: [anywidget()],
+		plugins: [react()],
 		build: {
 			outDir: "hello_widget/static",
 			lib: {
-				entry: ["src/main.jsx"],
+				entry: ["src/widget.jsx"],
 				formats: ["es"],
 			},
 		},

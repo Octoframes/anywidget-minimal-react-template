@@ -6208,6 +6208,12 @@ Wl.createRoot = Bi.createRoot, Wl.hydrateRoot = Bi.hydrateRoot;
 function Rd() {
   return /* @__PURE__ */ Hl.jsx("h1", { children: "Hello Anywidget + Vite!" });
 }
-Wl.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ Hl.jsx(wc.StrictMode, { children: /* @__PURE__ */ Hl.jsx(Rd, {}) })
-);
+function Od({ model: e, el: n }) {
+  let t = Wl.createRoot(n);
+  return t.render(
+    /* @__PURE__ */ Hl.jsx(wc.StrictMode, { children: /* @__PURE__ */ Hl.jsx(Rd, {}) })
+  ), () => t.unmount();
+}
+export {
+  Od as render
+};

@@ -3,7 +3,7 @@ import anywidget
 import traitlets
 
 class HelloWidget(anywidget.AnyWidget):
-    p = pathlib.Path(__file__).parent / "static/main.js"
+    p = pathlib.Path(__file__).parent / "static/widget.js"
     print(p)
     _esm =  p
 
