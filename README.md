@@ -1,0 +1,1 @@
+# anywidget-react-vite-test
