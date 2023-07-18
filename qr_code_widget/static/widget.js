@@ -7026,7 +7026,7 @@ function Vp({ content: e }) {
 function Wp({ model: e, el: t }) {
   let n = ao.createRoot(t);
   return n.render(
-    /* @__PURE__ */ so.jsx(tf.StrictMode, { children: /* @__PURE__ */ so.jsx(Vp, { content: "And here is some content!!!!!!!!" }) })
+    /* @__PURE__ */ so.jsx(tf.StrictMode, { children: /* @__PURE__ */ so.jsx(Vp, { content: e.get("content") }) })
   ), () => n.unmount();
 }
 export {
