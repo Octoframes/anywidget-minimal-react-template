@@ -783,7 +783,7 @@ var require_react_development = __commonJS({
           }
           return children;
         }
-        function createContext(defaultValue) {
+        function createContext2(defaultValue) {
           var context = {
             $$typeof: REACT_CONTEXT_TYPE,
             // As a workaround to support multiple concurrent renderers, we categorize
@@ -1069,7 +1069,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher;
         }
-        function useContext(Context) {
+        function useContext2(Context) {
           var dispatcher = resolveDispatcher();
           {
             if (Context._context !== void 0) {
@@ -1083,7 +1083,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context);
         }
-        function useState(initialState) {
+        function useState2(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1095,7 +1095,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect(create, deps) {
+        function useEffect2(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -1863,7 +1863,7 @@ var require_react_development = __commonJS({
         exports.Suspense = REACT_SUSPENSE_TYPE;
         exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
         exports.cloneElement = cloneElement$1;
-        exports.createContext = createContext;
+        exports.createContext = createContext2;
         exports.createElement = createElement$1;
         exports.createFactory = createFactory;
         exports.createRef = createRef;
@@ -1874,10 +1874,10 @@ var require_react_development = __commonJS({
         exports.startTransition = startTransition;
         exports.unstable_act = act;
         exports.useCallback = useCallback;
-        exports.useContext = useContext;
+        exports.useContext = useContext2;
         exports.useDebugValue = useDebugValue;
         exports.useDeferredValue = useDeferredValue;
-        exports.useEffect = useEffect;
+        exports.useEffect = useEffect2;
         exports.useId = useId;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useInsertionEffect = useInsertionEffect;
@@ -1885,7 +1885,7 @@ var require_react_development = __commonJS({
         exports.useMemo = useMemo;
         exports.useReducer = useReducer;
         exports.useRef = useRef;
-        exports.useState = useState;
+        exports.useState = useState2;
         exports.useSyncExternalStore = useSyncExternalStore;
         exports.useTransition = useTransition;
         exports.version = ReactVersion;
@@ -2381,9 +2381,9 @@ var require_react_dom_development = __commonJS({
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
           __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
         }
-        var React3 = require_react();
+        var React4 = require_react();
         var Scheduler = require_scheduler();
-        var ReactSharedInternals = React3.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React4.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         var suppressWarning = false;
         function setSuppressWarning(newSuppressWarning) {
           {
@@ -3988,7 +3988,7 @@ var require_react_dom_development = __commonJS({
           {
             if (props.value == null) {
               if (typeof props.children === "object" && props.children !== null) {
-                React3.Children.forEach(props.children, function(child) {
+                React4.Children.forEach(props.children, function(child) {
                   if (child == null) {
                     return;
                   }
@@ -12435,7 +12435,7 @@ var require_react_dom_development = __commonJS({
           }
         }
         var fakeInternalInstance = {};
-        var emptyRefsObject = new React3.Component().refs;
+        var emptyRefsObject = new React4.Component().refs;
         var didWarnAboutStateAssignmentForComponent;
         var didWarnAboutUninitializedState;
         var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -25416,21 +25416,44 @@ var require_lib = __commonJS({
 });
 
 // src/widget.jsx
-var React2 = __toESM(require_react());
+var React3 = __toESM(require_react());
 var import_client = __toESM(require_client());
 
 // src/App.jsx
-var React = __toESM(require_react());
+var React2 = __toESM(require_react());
 var import_react_qr_code = __toESM(require_lib());
-function App({ content }) {
-  return /* @__PURE__ */ React.createElement(import_react_qr_code.default, { value: content });
+
+// src/hooks.js
+var React = __toESM(require_react());
+var ModelContext = React.createContext();
+function useModelState(name) {
+  let model = React.useContext(ModelContext);
+  if (!model) {
+    throw new Error("ModelContext not found");
+  }
+  let [state, setState] = React.useState(model.get(name));
+  React.useEffect(() => {
+    let callback = () => setState(model.get(name));
+    model.on(`change:${name}`, callback);
+    return () => model.off(`change:${name}`, callback);
+  }, []);
+  return [state, (value) => {
+    model.set(name, value);
+    model.save_changes();
+  }];
+}
+
+// src/App.jsx
+function App() {
+  let [content] = useModelState("content");
+  return /* @__PURE__ */ React2.createElement(import_react_qr_code.default, { value: content });
 }
 
 // src/widget.jsx
 function render({ model, el }) {
   let root = import_client.default.createRoot(el);
   root.render(
-    /* @__PURE__ */ React2.createElement(React2.StrictMode, null, /* @__PURE__ */ React2.createElement(App, { content: model.get("content") }))
+    /* @__PURE__ */ React3.createElement(React3.StrictMode, null, /* @__PURE__ */ React3.createElement(ModelContext.Provider, { value: model }, /* @__PURE__ */ React3.createElement(App, null)))
   );
   return () => root.unmount();
 }
