@@ -1,7 +1,11 @@
 [project]
-name = "anywidget-react-vite-test"
+name = "qr-code-widget"
 version = "0.0.1"
-
 dependencies = [
     "anywidget"
+]
+
+[project.optional-dependencies]
+dev = [
+    "watchfiles"
 ]

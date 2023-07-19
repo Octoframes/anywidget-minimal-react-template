@@ -1,7 +1,7 @@
-// widget.jsx
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import * as React from "react";
+import ReactDOM from "react-dom/client";
+
+import App from "./App.jsx";
 
 export function render({ model, el }) {
   let root = ReactDOM.createRoot(el);
