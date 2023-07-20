@@ -1,5 +1,9 @@
+import * as React from "react";
 import QRCode from "react-qr-code";
 
-export default function App({ content }) {
-  return <QRCode value={content} />
+import { useModelState } from "./hooks.js";
+
+export default function App() {
+  let [content] = useModelState("content");
+  return <QRCode value={content} />;
 }
