@@ -16,7 +16,7 @@ dev = [
 ]
 
 [tool.hatch.build]
-artifact = "src/qr_code_widget/widget.js"
+artifacts = ["src/qr_code_widget/widget.js"]
 
 [tool.hatch.build.hooks.jupyter-builder]
 build-function = "hatch_jupyter_builder.npm_builder"
