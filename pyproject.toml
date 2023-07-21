@@ -15,6 +15,10 @@ dev = [
     "jupyterlab"
 ]
 
+# automatically add the dev feature to the default env (e.g., hatch shell)
+[tool.hatch.envs.default]
+features = ["dev"]
+
 [tool.hatch.build]
 artifacts = ["src/qr_code_widget/widget.js"]
 
