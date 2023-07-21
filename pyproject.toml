@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qr-code-widget"
-dynamic = ["version"]
+version = "0.0.0"
 dependencies = [
     "anywidget"
 ]
@@ -14,10 +14,6 @@ dev = [
     "watchfiles",
     "jupyterlab"
 ]
-
-[tool.hatch.version]
-path = "package.json"
-pattern = "\"version\": \"(?P<version>.+?)\""
 
 [tool.hatch.build]
 artifact = "src/qr_code_widget/widget.js"
