@@ -1,1 +1,1 @@
-# anywidget-react-vite-test
+# anywidget-minimal-react-template
