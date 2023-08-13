@@ -1,6 +1,6 @@
 # anywidget-minimal-react-template
 
-``````
+```
 npm install
 npm run build
 
