@@ -28,4 +28,4 @@ Your project should now look like this:
 ┣━━ 📄 package-lock.json
 ┣━━ 📄 .gitignore
 ┗━━ 📄 hello.ipynb
-``````
+```
