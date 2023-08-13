@@ -12,4 +12,4 @@ except importlib.metadata.PackageNotFoundError:
 
 class QRCodeWidget(anywidget.AnyWidget):
     content = traitlets.Unicode("Hi").tag(sync=True)
-    _esm = pathlib.Path(__file__).parent / "widget.js"
+    _esm = pathlib.Path(__file__).parent / "static" /"widget.js"
