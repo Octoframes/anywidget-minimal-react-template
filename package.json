@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "npm run build -- --sourcemap=inline --watch",
-    "build": "esbuild --minify --format=esm --bundle --outdir=src/qr_code_widget/static js/widget.jsx",
+    "build": "esbuild --minify --format=esm --bundle --outdir=src/qr_code_widget/static js/*.jsx",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {

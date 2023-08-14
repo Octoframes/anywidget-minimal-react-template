@@ -6,6 +6,7 @@ npm run build
 
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]" 
+npm run dev
 ```
 
 Your project should now look like this:
