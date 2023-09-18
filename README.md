@@ -1,5 +1,26 @@
-# anywidget-minimal-react-template
 
+
+# ⚠️⚠️⚠️ This repo is depecated ⚠️⚠️⚠️
+
+In order to create a react-based project with anywidget, please use:
+
+`npm create anywidget@latest`
+and visit https://github.com/manzt/anywidget
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+
+# OLD README.md
+
+# anywidget-minimal-react-template
 ```
 npm install
 npm run build
