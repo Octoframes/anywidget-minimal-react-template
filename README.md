@@ -1,6 +1,6 @@
 
 
-# ⚠️⚠️⚠️ This repo is depecated ⚠️⚠️⚠️
+# ⚠️⚠️⚠️ This repo is deprecated ⚠️⚠️⚠️
 
 In order to create a react-based project with anywidget, please use:
 
